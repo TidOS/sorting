@@ -1,0 +1,60 @@
+
+<<<<<<<<<---------------  FIRST THINGS FIRST --------------->>>>>>>>>
+ ___________________________________________________________________
+|  You need to be in the same directory as this README else 	    |
+|  some of the scripts will fail.				    |
+|								    |
+|  First, run							    |
+|  	make clean						    |
+|  to clean up everything.  It should already be clean, but 	    |
+|  you may run it if you want a fresh start at any point.	    |
+|								    |
+|  Then, if you want to remove my old results run		    |
+|	./cleanResults				        	    |
+|___________________________________________________________________|
+
+
+<<<<<<<<<--  TO COMPILE THE JAVA FILES AND GENERATE DATA  -->>>>>>>>>
+ ___________________________________________________________________
+|  Now, type							    |
+|  	make							    |
+|  to recompile all the Java classes and then generate the data	    |
+|  Alternatively, you could run					    |
+|  	javac *.java				   		    |
+|  	./generateInput			    			    |
+|  instead of make because that's all it does anyway		    |
+|  								    |
+|  It is also possible to generate a single file with the number    |
+|  of items you want.						    |
+|	java getRandoms num > outputFile			    |
+|  will do the trick.  If you want it sorted, you can use the 	    |
+|  following commands:						    |
+|        sort -g yourFile > temp				    |
+|	 mv temp yourFile					    |
+|  Reverse sorting can be achieved by adding the -r switch to sort  |
+|___________________________________________________________________|
+
+
+<<<<<<<<<------- TO RUN THE SORTS AND STORE THE DATA ------->>>>>>>>>
+ ___________________________________________________________________
+|  To run ALL the sorts, run					    |
+|   ./runSorts					     		    |
+|___________________________________________________________________|
+
+
+<<<<<<<<<-------------  RUNNING INDIVIDUAL SORTS -------------->>>>>>>>>
+ _______________________________________________________________________
+|  If you wish to run a sort individually, the format is as follows:	|
+|    java SORTTYPE 'data/{random,reverse,sorted}/#of items' '#of items'	|
+|, substituting proper values.  i.e.					|
+|    java QSort data/random/32 32					|
+|    									|
+|    									|
+|  OPTIONAL:  if you want to output the sorted data to a file in order	|
+|  to verify the correctness of the sort, you would want to simply add	|
+|  another argument to the java call:  the file to write to.		|
+|  EXAMPLE:								|
+|     java Insertion data/sorted/64 64 64.output			|
+|  This would perform insertion sort on 64 sorted numbers and print	|
+|  the results in a file called 64.output in the current directory.	|
+|_______________________________________________________________________|

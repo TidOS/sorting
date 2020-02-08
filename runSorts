@@ -1,0 +1,38 @@
+#!/bin/bash
+# this script will run each sort on our data and
+# then place the results in
+# the results directory by appending each run of
+# an algorithm's output to the end of each respective
+# test's file.
+#
+# Just look in the results directory.  The way it's laid
+# out should make plenty of sense
+#
+# Jordan Thomas
+# February 2007
+
+for i in  "1" "2" "3";
+do
+	for j in  "Merge" "Insertion" "QSort";
+	do
+		for x in "random" "sorted" "reverse";
+		do
+			for k in $( ls values | sort -n);
+			do
+				# I had to use -X300M because the stack was
+				# overflowing when I would do quicksort on
+				# large sorted lists.
+				#
+				# If you don't have enough memory to call this
+				# you could change 300M to 200M or something
+				# more reasonable
+				echo doing java -Xss300M $j data/$x/$k $k
+				echo storing in results/$j/$x/test$i
+				echo ______________________________
+				java -Xss300M $j data/$x/$k $k >> results/$j/$x/test$i
+			done
+		done
+		echo "Generating new inputs for next test..."
+		./generateInput
+	done
+done

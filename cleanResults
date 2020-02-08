@@ -1,0 +1,22 @@
+#!/bin/bash
+#  This script will delete and then recreate
+#  all the results as empty files
+#  in the results directory
+#
+#  Jordan Thomas
+#  February 2007
+
+# I did use i in `seq 1 3` but the
+# Macs in the Mac lab didn't have seq installed
+# for some stupid reason.
+for i in "1" "2" "3";
+do
+	for j in "QSort" "Merge" "Insertion";
+	do
+		for x in "random" "sorted" "reverse";
+		do
+			rm results/$j/$x/test$i
+			touch results/$j/$x/test$i
+		done
+	done
+done

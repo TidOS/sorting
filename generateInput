@@ -1,0 +1,51 @@
+#!/bin/bash
+
+# this script generates a lot of random data
+# It puts all of it in several directories.  The
+# ones that need to be sorted are and that is that.
+
+# Jordan Thomas
+# February 2007
+
+# actually get all the random numbers from the getRandoms
+# Java Class and put them in the proper directories.
+for typeOfSort in {"random","sorted","reverse"};
+do
+	for i in $( ls values/);
+	do
+		java getRandoms $i > data/$typeOfSort/$i
+	done
+done
+
+# sort the data for the sorted tests
+# we enter the directory and sort every file
+# in it.
+cd data/sorted
+for i in $( ls | sort -g)
+do
+	temp=$i
+	echo sorting:   data/sorted/$temp
+	# a temp file is used because it didn't want to work
+	# correctly if I piped the file being sorted back to
+	# itself.
+	sort -g $i > temp
+	mv temp $i
+done
+echo -------------------------------------
+cd ..
+
+# sort the date for the reverse sort tests
+# We enter the directory and sort everything in
+# it backwards.  It's the same idea as above.
+cd reverse
+for i in $( ls | sort -g)
+do
+	temp=$i
+	echo reverse sorting:   data/reverse/$temp
+	sort -gr $i > temp
+	mv temp $i
+done
+cd ../..
+
+#sorting is completed and data has been generated, so we are done.
+echo done!
